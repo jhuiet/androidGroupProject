@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Gains</string>
+    <string name="reps_label">Reps</string>
+    <string name="reps">10</string>
+    <string name="decrease">-</string>
+    <string name="increase">+</string>
+    <string name="weight_label">Weight</string>
+    <string name="weight">30</string>
+    <string name="submit">Submit</string>
+    <string name="sets">5</string>
+    <string name="sets_label">Sets</string>
+
+    <string-array name="workout_array">
+        <item>Push-Ups</item>
+        <item>Crunches</item>
+        <item>Squats</item>
+        <item>Bench Press</item>
+    </string-array>
+    <string name="title_activity_home_page">HomePage</string>
+</resources>
