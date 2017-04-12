@@ -5,17 +5,22 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import static android.view.View.GONE;
 
-public class MainActivity extends AppCompatActivity implements Button.OnClickListener {
+public class MainActivity extends AppCompatActivity implements Button.OnClickListener, AdapterView.OnItemSelectedListener, EditText.OnEditorActionListener {
 
     public boolean isDark = false;  // determines the current theme being used
     public boolean hasMem = true;   // determines if the app should remember the last entries
@@ -23,8 +28,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     public int myReps = 0;         // the number of reps
     public int mySets = 0;       // the amount of sets
+    public float myWeight = 45;   //the ammount of weight
 
     // define variables for the widgets
+    private Spinner workoutSpin;    //spinner to define workout
     private TextView repsLabel;     // "Reps"
     private TextView repsTextView;  // Number of Reps
     private Button repsUpButton;    // Reps+
@@ -33,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     private TextView setsTextView;  // Number of Sets
     private Button setsUpButton;    // Sets+
     private Button setsDownButton;  // Sets-
+    private TextView weightLabel;     // "Weight"
+    private EditText weightEditText;  // Number of weight
+    private Button weightUpButton;    // weight+
+    private Button weightDownButton;  // weight-
 
     // set up SharedPreferences
     public static final String MyPREFERENCES = "MyPrefs" ;
@@ -55,15 +66,27 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         setsTextView = (TextView) findViewById(R.id.setsTextView);
         setsDownButton = (Button) findViewById(R.id.SetsDownButton);
         setsUpButton = (Button) findViewById(R.id.SetsUpButton);
+        weightLabel = (TextView) findViewById(R.id.weightLabel);
+        weightEditText = (EditText) findViewById(R.id.weightTextView);
+        weightDownButton = (Button) findViewById(R.id.weightDownButton);
+        weightUpButton = (Button) findViewById(R.id.weightUpButton);
+        workoutSpin = (Spinner) findViewById(R.id.workoutSpin);
+
+
+        hideWeight();
+
 
         // set the listeners
         repsUpButton.setOnClickListener(this);
         repsDownButton.setOnClickListener(this);
         setsUpButton.setOnClickListener(this);
         setsDownButton.setOnClickListener(this);
-
+        weightDownButton.setOnClickListener(this);
+        weightUpButton.setOnClickListener(this);
+        workoutSpin.setOnItemSelectedListener(this);
         display();
     }
+
 
     @Override
     protected void onResume()
@@ -116,21 +139,31 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.DownButton:
-                if (myReps > 0) myReps = myReps - 5;
+                if (myReps > 0) myReps = myReps - 1;
                 display();
                 break;
             case R.id.UpButton:
-                myReps = myReps + 5;
+                myReps = myReps + 1;
                 display();
                 break;
             case R.id.SetsDownButton:
-                if (mySets > 0) mySets = mySets - 5;
+                if (mySets > 0) mySets = mySets - 1;
                 display();
                 break;
             case R.id.SetsUpButton:
-                mySets = mySets + 5;
+                mySets = mySets + 1;
                 display();
                 break;
+            case R.id.weightDownButton:
+                if(myWeight > 0)
+                    myWeight = myWeight - 2.5f;
+                display();
+                break;
+            case R.id.weightUpButton:
+                myWeight = myWeight + 2.5f;
+                display();
+                break;
+
         }
     }
 
@@ -138,13 +171,64 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     public void display() {
         repsTextView.setText(Integer.toString(myReps));
         setsTextView.setText(Integer.toString(mySets));
+        weightEditText.setText(Double.toString(myWeight));
         // if "Remember Entries" is checked, save the input values
         if (hasMem)
         {
             editor = sharedpreferences.edit();
             editor.putInt("myReps", myReps);
             editor.putInt("mySets", mySets);
+            editor.putFloat("myWeight", myWeight);
             editor.commit();
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch(position){
+            case 0:
+                hideWeight();
+                break;
+            case 1:
+                hideWeight();
+                break;
+            case 2:
+                showWeight(view);
+                break;
+            case 3:
+                showWeight(view);
+                break;
+
+
+        }
+    }
+
+    private void showWeight(View view) {
+        weightLabel.setVisibility(view.VISIBLE);
+        weightEditText.setVisibility(view.VISIBLE);
+        weightDownButton.setVisibility(view.VISIBLE);
+        weightUpButton.setVisibility(view.VISIBLE);
+    }
+
+
+    private void hideWeight() {
+        weightLabel.setVisibility(GONE);
+        weightEditText.setVisibility(GONE);
+        weightDownButton.setVisibility(GONE);
+        weightUpButton.setVisibility(GONE);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_UNSPECIFIED)
+            myWeight = Float.parseFloat(weightEditText.getText().toString());
+        myWeight = myWeight - myWeight%2.5f;
+        display();
+        return false;
     }
 }

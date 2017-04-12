@@ -96,6 +96,51 @@
                 android:id="@+id/SetsUpButton"
                 android:textSize="20sp"/>
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/weightLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weight_label"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/weightTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:inputType="number|numberDecimal"
+                android:text="@string/weight"
+                android:textSize="20sp"
+                android:selectAllOnFocus="true"
+                />
+
+            <Button
+                android:id="@+id/weightDownButton"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/decrease"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/weightUpButton"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:text="@string/increase"
+                android:textSize="20sp" />
+
+
+        </TableRow>
     </TableLayout>
 
     <Spinner
@@ -108,8 +153,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:layout_below="@+id/infoTable"
-        android:gravity="center_horizontal">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="13dp">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="45dp"
