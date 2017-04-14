@@ -17,19 +17,32 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.view.View.GONE;
-
+import static jolliffe.a415.csc.groupproject.MainActivity.workoutType.BENCH_PRESS;
+import static jolliffe.a415.csc.groupproject.MainActivity.workoutType.PUSH_UPS;
+import static jolliffe.a415.csc.groupproject.MainActivity.workoutType.SIT_UPS;
+import static jolliffe.a415.csc.groupproject.MainActivity.workoutType.SQUATS;
+//todo replace input styles with pickers
+//todo set sharedpreferences to store the spinner workoutSpin position, and the sets/reps potentially
+//todo can we set different sharedpreference things to store a value for each workout type?
+//todo example: save pushups reps/sets independent of squat reps/sets/weight
 public class MainActivity extends AppCompatActivity implements Button.OnClickListener, AdapterView.OnItemSelectedListener, EditText.OnEditorActionListener {
 
     public boolean isDark = false;  // determines the current theme being used
     public boolean hasMem = true;   // determines if the app should remember the last entries
     private boolean flag = false;
 
+
+    WorkoutsDB workoutDB = new WorkoutsDB(this);
+    StringBuilder sb = new StringBuilder();
+
     public int myReps = 0;         // the number of reps
     public int mySets = 0;       // the amount of sets
     public float myWeight = 45;   //the ammount of weight
-
+    public enum workoutType{PUSH_UPS,SIT_UPS,SQUATS,BENCH_PRESS}
+    public workoutType workout;
     // define variables for the widgets
     private Spinner workoutSpin;    //spinner to define workout
     private TextView repsLabel;     // "Reps"
@@ -44,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     private EditText weightEditText;  // Number of weight
     private Button weightUpButton;    // weight+
     private Button weightDownButton;  // weight-
+    private Button submitButton; // Submit
 
     // set up SharedPreferences
     public static final String MyPREFERENCES = "MyPrefs" ;
@@ -71,9 +85,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         weightDownButton = (Button) findViewById(R.id.weightDownButton);
         weightUpButton = (Button) findViewById(R.id.weightUpButton);
         workoutSpin = (Spinner) findViewById(R.id.workoutSpin);
+        submitButton = (Button) findViewById(R.id.submitButton);
 
 
-        hideWeight();
+        hideWeight();   //hide weight attribute since pushups don't have one by default
 
 
         // set the listeners
@@ -84,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         weightDownButton.setOnClickListener(this);
         weightUpButton.setOnClickListener(this);
         workoutSpin.setOnItemSelectedListener(this);
+        submitButton.setOnClickListener(this);
+        weightEditText.setOnEditorActionListener(this);
         display();
     }
 
@@ -128,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         else w = new ContextThemeWrapper(this, R.style.AppTheme);
         getTheme().setTo(w.getTheme());
         // if "Remember Entries" is checked, reload the numbers previously entered instead of resetting fields to 0
+
         if(hasMem)
         {
             myReps = sharedpreferences.getInt("myReps", myReps);
@@ -163,6 +181,26 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                 myWeight = myWeight + 2.5f;
                 display();
                 break;
+            case R.id.submitButton:
+
+
+                Workout newWorkout = new Workout(mySets, myReps, myWeight, 1, workout.toString());
+                long insertID = workoutDB.insertWorkout(newWorkout);
+
+                if (insertID > 0){
+
+                    Toast.makeText(getApplicationContext(), "Workout inserted.", Toast.LENGTH_SHORT).show();
+                    sb.append("Row inserted! Insert id: " + insertID + "\n");
+
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
+
+                }
+                break;
+
+
+
 
         }
     }
@@ -188,18 +226,20 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         switch(position){
             case 0:
                 hideWeight();
+                workout = PUSH_UPS;
                 break;
             case 1:
                 hideWeight();
+                workout = SIT_UPS;
                 break;
             case 2:
                 showWeight(view);
+                workout = SQUATS;
                 break;
             case 3:
                 showWeight(view);
+                workout = BENCH_PRESS;
                 break;
-
-
         }
     }
 
