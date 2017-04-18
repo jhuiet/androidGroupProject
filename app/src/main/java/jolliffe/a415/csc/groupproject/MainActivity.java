@@ -38,9 +38,29 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     WorkoutsDB workoutDB = new WorkoutsDB(this);
     StringBuilder sb = new StringBuilder();
 
-    public int myReps = 0;         // the number of reps
-    public int mySets = 0;       // the amount of sets
-    public float myWeight = 45;   //the ammount of weight
+    public int pushupReps = 0;         // the number of reps
+    public int pushupSets = 0;       // the amount of sets
+
+
+    public int squatReps = 0;         // the number of reps
+    public int squatSets = 0;       // the amount of sets
+    public float squatWeight = 45;   //the ammount of weight
+
+
+
+    public int crunchReps = 0;         // the number of reps
+    public int crunchSets = 0;       // the amount of sets
+
+    public int benchReps = 0;         // the number of reps
+    public int benchSets = 0;       // the amount of sets
+    public float benchWeight = 45;   //the ammount of weight
+
+
+
+
+
+
+
     public enum workoutType{PUSH_UPS,SIT_UPS,SQUATS,BENCH_PRESS}
     public workoutType workout;
     // define variables for the widgets
