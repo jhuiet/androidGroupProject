@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     public int squatSets = 0;       // the amount of sets
     public float squatWeight = 45;   //the ammount of weight
 
-
+//change
 
     public int crunchReps = 0;         // the number of reps
     public int crunchSets = 0;       // the amount of sets
