@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
 
 
-
+//change
 
     public int crunchReps = 0;         // the number of reps
     public int crunchSets = 0;       // the amount of sets
