@@ -336,6 +336,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
                     Toast.makeText(getApplicationContext(), "Workout inserted.", Toast.LENGTH_SHORT).show();
                     sb.append("Row inserted! Insert id: " + insertID + "\n");
+                    Toast.makeText(getApplicationContext(), "The workout type is" + newWorkout.getWorkoutType() + " and the workout time is " + newWorkout.getWorkoutDate(), Toast.LENGTH_LONG).show();
+
 
                 }
                 else{

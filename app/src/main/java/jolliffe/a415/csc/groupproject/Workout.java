@@ -12,6 +12,8 @@ public class Workout {
     private int workoutId;
     private String workoutType;
 
+    private String workoutDate;
+
 
     public String getWorkoutDate() {
         return workoutDate;
@@ -20,8 +22,6 @@ public class Workout {
     public void setWorkoutDate(String workoutDate) {
         this.workoutDate = workoutDate;
     }
-
-    private String workoutDate;
 
 
     public Workout(int reps, int sets, int weight, int workoutId, String workoutType) {
@@ -51,17 +51,6 @@ public class Workout {
         this.workoutDate = workoutDate;
     }
 
-
-
-
-    public Workout(int reps, int sets, int weight, String workoutType) {
-        this.reps = reps;
-        this.sets = sets;
-        this.weight = weight;
-        this.workoutId = workoutId;
-        this.workoutType = workoutType;
-        this.workoutDate = workoutDate;
-    }
 
     public int getReps() {
         return reps;

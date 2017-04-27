@@ -44,7 +44,7 @@ public class WorkoutsDB {
                     WORKOUTS_COLUMN_REPS + " INTEGER, " +
                     WORKOUTS_COLUMN_SETS + " INTEGER, " +
                     WORKOUTS_COLUMN_WEIGHT + " INTEGER, " +
-                    WORKOUTS_COLUMN_DATE + " STRING);";
+                    WORKOUTS_COLUMN_DATE + " STRING NOT NULL);";
 
     public static final String DROP_USERS_TABLE =
             "DROP TABLE IF EXISTS " + WORKOUTS_TABLE;

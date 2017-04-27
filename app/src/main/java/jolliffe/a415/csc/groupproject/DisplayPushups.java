@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,7 @@ public class DisplayPushups extends AppCompatActivity implements TextView.OnEdit
             //sb.append(p.getID() + "|" + p.getName() + "\n");
             sb.append(w.getWorkoutType() + "    " + w.getReps() + "       " + w.getSets() + "       " +
                     w.getWorkoutDate() + "\n");
+            Toast.makeText(getApplicationContext(), "The workout type is" + w.getWorkoutDate() + " and the workout time is " + w.getWorkoutDate(), Toast.LENGTH_SHORT).show();
 
 
         }

@@ -46,6 +46,7 @@ public class DisplayBenchPress extends AppCompatActivity implements TextView.OnE
                     w.getWorkoutDate() + "\n");
 
 
+
         }
 
         tv.setText(sb.toString());
