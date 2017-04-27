@@ -25,15 +25,15 @@ public class WorkoutsDB {
 
     public static final String WORKOUTS_COLUMN_REPS = "reps";
 
-    public static final int WORKOUTS_REPS_COL = 0;
+    public static final int WORKOUTS_REPS_COL = 2;
     public static final String WORKOUTS_COLUMN_SETS = "sets";
-    public static final int WORKOUTS_SETS_COL = 1;
+    public static final int WORKOUTS_SETS_COL = 3;
     public static final String WORKOUTS_COLUMN_WEIGHT ="weight";
-    public static final int WORKOUTS_WEIGHT_COL = 2;
+    public static final int WORKOUTS_WEIGHT_COL = 4;
     public static final String WORKOUTS_COLUMN_DATE = "date";
-    public static final int WORKOUTS_DATE_COL = 3;
+    public static final int WORKOUTS_DATE_COL = 5;
     public static final String WORKOUTS_COLUMN_WORKOUT_TYPE = "workoutType";
-    public static final int WORKOUTS_WORKOUT_TYPE_COL = 4;
+    public static final int WORKOUTS_WORKOUT_TYPE_COL = 0;
     public static final String WORKOUTS_COLUMN_WORKOUT_ID = "workoutID";
     public static final int WORKOUTS_ID_COL = 5;
 
@@ -178,8 +178,8 @@ public class WorkoutsDB {
                         cursor.getInt(WORKOUTS_SETS_COL),
                         cursor.getInt(WORKOUTS_WEIGHT_COL),
                         cursor.getInt(WORKOUTS_ID_COL),
-                        cursor.getString(WORKOUTS_DATE_COL),
-                        cursor.getString(WORKOUTS_WORKOUT_TYPE_COL)
+                        cursor.getString(WORKOUTS_WORKOUT_TYPE_COL),
+                        cursor.getString(WORKOUTS_DATE_COL)
                         );
                 return workout;
 
