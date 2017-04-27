@@ -57,3 +57,4 @@ public class DisplaySquats extends AppCompatActivity implements TextView.OnEdito
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         return false;
     }
+}

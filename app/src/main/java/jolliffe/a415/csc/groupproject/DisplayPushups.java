@@ -42,7 +42,7 @@ public class DisplayPushups extends AppCompatActivity implements TextView.OnEdit
         ArrayList<Workout> workouts = workoutDB.getWorkoutWithType("PUSH_UPS");
         for (Workout w : workouts) {
             //sb.append(p.getID() + "|" + p.getName() + "\n");
-            sb.append(w.getWorkoutType() + "    " + w.getReps() + "       " + w.getSets() + "       "  +
+            sb.append(w.getWorkoutType() + "    " + w.getReps() + "       " + w.getSets() + "       " +
                     w.getWorkoutDate() + "\n");
 
 
@@ -57,3 +57,4 @@ public class DisplayPushups extends AppCompatActivity implements TextView.OnEdit
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         return false;
     }
+}

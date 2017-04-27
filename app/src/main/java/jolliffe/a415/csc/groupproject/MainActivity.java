@@ -329,7 +329,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                 Workout newWorkout;
                 int newWeight = Math.round(myWeight);
                 newWorkout = new Workout(mySets, myReps, newWeight, workout.toString(), dateTime);
-                Workout newWorkout2 = new Workout(0, 0, 0, "string", "string");
+               //Workout newWorkout2 = new Workout(0, 0, 0, "string", "string");
                 long insertID = workoutDB.insertWorkout(newWorkout);
 
                 if (insertID > 0){
