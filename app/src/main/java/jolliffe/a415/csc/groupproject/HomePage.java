@@ -79,6 +79,8 @@ public class HomePage extends AppCompatActivity implements Button.OnClickListene
                 break;
             case(R.id.track_button):
                 //switch to graph
+
+                startActivity(new Intent(HomePage.this, Graph.class));
                 break;
 
         }

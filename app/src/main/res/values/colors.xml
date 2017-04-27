@@ -3,6 +3,8 @@
     <color name="colorPrimary">#008D3F</color>
     <color name="colorPrimaryDark">#064020</color>
     <color name="colorAccent">#00E12E</color>
+   r>
+    <color name="black">#000000</color>
 
     <color name="colorPrimaryInverse">#005D8D</color>
     <color name="colorPrimaryDarkInverse">#113040</color>

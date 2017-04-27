@@ -57,3 +57,4 @@ public class DisplayCrunches extends AppCompatActivity implements TextView.OnEdi
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         return false;
     }
+}
