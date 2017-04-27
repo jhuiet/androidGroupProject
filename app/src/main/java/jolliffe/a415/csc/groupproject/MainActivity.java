@@ -19,6 +19,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static android.view.View.GONE;
 import static jolliffe.a415.csc.groupproject.MainActivity.workoutType.BENCH_PRESS;
 import static jolliffe.a415.csc.groupproject.MainActivity.workoutType.PUSH_UPS;
@@ -319,8 +322,14 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                         myWeight = benchWeight;
                         break;
                 }
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                Date date = new Date();
+                String dateTime = dateFormat.format(date);
 
-                Workout newWorkout = new Workout(mySets, myReps, myWeight, 1, workout.toString());
+                Workout newWorkout;
+                int newWeight = Math.round(myWeight);
+                newWorkout = new Workout(mySets, myReps, newWeight, workout.toString(), dateTime);
+                Workout newWorkout2 = new Workout(0, 0, 0, "string", "string");
                 long insertID = workoutDB.insertWorkout(newWorkout);
 
                 if (insertID > 0){

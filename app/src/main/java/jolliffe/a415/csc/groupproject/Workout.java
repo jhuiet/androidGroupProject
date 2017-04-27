@@ -8,9 +8,10 @@ public class Workout {
 
     private int reps;
     private int sets;
-    private float weight;
+    private int weight;
     private int workoutId;
     private String workoutType;
+
 
     public String getWorkoutDate() {
         return workoutDate;
@@ -22,16 +23,44 @@ public class Workout {
 
     private String workoutDate;
 
-    public Workout(){
 
-    }
-
-    public Workout(int reps, int sets, float weight, int workoutId, String workoutType) {
+    public Workout(int reps, int sets, int weight, int workoutId, String workoutType) {
         this.reps = reps;
         this.sets = sets;
         this.weight = weight;
         this.workoutId = workoutId;
         this.workoutType = workoutType;
+        this.workoutDate = workoutDate;
+    }
+
+    public Workout(int reps, int sets, int weight, String workoutType, String workoutDate) {
+        this.reps = reps;
+        this.sets = sets;
+        this.weight = weight;
+        this.workoutId = workoutId;
+        this.workoutType = workoutType;
+        this.workoutDate = workoutDate;
+    }
+
+    public Workout(int reps, int sets, int weight, int workoutId,  String workoutType, String workoutDate) {
+        this.reps = reps;
+        this.sets = sets;
+        this.weight = weight;
+        this.workoutId = workoutId;
+        this.workoutType = workoutType;
+        this.workoutDate = workoutDate;
+    }
+
+
+
+
+    public Workout(int reps, int sets, int weight, String workoutType) {
+        this.reps = reps;
+        this.sets = sets;
+        this.weight = weight;
+        this.workoutId = workoutId;
+        this.workoutType = workoutType;
+        this.workoutDate = workoutDate;
     }
 
     public int getReps() {
@@ -54,7 +83,7 @@ public class Workout {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 
