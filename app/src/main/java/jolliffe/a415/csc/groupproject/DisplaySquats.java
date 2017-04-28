@@ -42,7 +42,7 @@ public class DisplaySquats extends AppCompatActivity implements TextView.OnEdito
         ArrayList<Workout> workouts = workoutDB.getWorkoutWithType("SQUATS");
         for (Workout w : workouts) {
             //sb.append(p.getID() + "|" + p.getName() + "\n");
-            sb.append(w.getWorkoutType() + "    " + w.getReps() + "       " + w.getSets() + "       " +
+            sb.append(w.getWorkoutType() + "    " + w.getReps() + "               " + w.getSets() + "       " + w.getWeight() + "            " +
                     w.getWorkoutDate() + "\n");
 
 

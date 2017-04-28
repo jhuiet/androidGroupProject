@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gains</string>
+    <string name="app_name">Gainz</string>
     <string name="reps_label">Reps</string>
     <string name="reps">10</string>
     <string name="decrease">-</string>

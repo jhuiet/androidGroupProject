@@ -33,9 +33,9 @@ public class WorkoutsDB {
     public static final String WORKOUTS_COLUMN_DATE = "date";
     public static final int WORKOUTS_DATE_COL = 5;
     public static final String WORKOUTS_COLUMN_WORKOUT_TYPE = "workoutType";
-    public static final int WORKOUTS_WORKOUT_TYPE_COL = 0;
+    public static final int WORKOUTS_WORKOUT_TYPE_COL = 1;
     public static final String WORKOUTS_COLUMN_WORKOUT_ID = "workoutID";
-    public static final int WORKOUTS_ID_COL = 5;
+    public static final int WORKOUTS_ID_COL = 0;
 
     public static final String CREATE_WORKOUT_TABLE =
             "CREATE TABLE " + WORKOUTS_TABLE + " (" +

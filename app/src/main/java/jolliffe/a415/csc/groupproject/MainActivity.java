@@ -61,7 +61,9 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     public float benchWeight = 45;   //the ammount of weight
 
 
-
+    int mySets = 0;
+    int myReps = 0;
+    float myWeight = 0;
 
 
 
@@ -173,27 +175,9 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
         if(hasMem)
         {
-            switch(workoutSpin.getSelectedItemPosition()){
-                case 0:
-                    pushupReps = sharedpreferences.getInt("pushupReps", pushupReps);
-                    pushupSets = sharedpreferences.getInt("pushupSets", pushupSets);
-                    break;
-                case 1:
-                     crunchReps = sharedpreferences.getInt("crunchReps", crunchReps);
-                     crunchSets = sharedpreferences.getInt("crunchSets", crunchSets);
-                    break;
-                case 2:
-                    squatReps = sharedpreferences.getInt("squatReps", squatReps);
-                    squatSets = sharedpreferences.getInt("squatSets", squatSets);
-                    squatWeight = sharedpreferences.getFloat("squatWeight", squatWeight);
-                    break;
-                case 3:
-                    benchReps = sharedpreferences.getInt("benchReps", benchReps);
-                    benchSets = sharedpreferences.getInt("benchSets", benchSets);
-                    benchWeight = sharedpreferences.getFloat("benchWeight", benchWeight);
-                    break;
-            }
-
+            mySets = sharedpreferences.getInt("mySets", 0);
+            myReps = sharedpreferences.getInt("myReps", 0);
+            myWeight = sharedpreferences.getFloat("myWeight", 0.0f);
         }
     }
 
@@ -201,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.DownButton:
-                switch (workoutSpin.getSelectedItemPosition()){
+                /*switch (workoutSpin.getSelectedItemPosition()){
                     case 0:
                         if (pushupReps > 0) pushupReps = pushupReps - 1;
                         break;
@@ -214,12 +198,17 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                     case 3:
                         if (benchReps > 0) benchReps = benchReps - 1;
                         break;
-                }
+                }*/
+
+                if  (myReps > 0)
+                myReps = myReps - 5;
+
+
                 display();
                 break;
 
             case R.id.UpButton:
-                switch (workoutSpin.getSelectedItemPosition()){
+               /* switch (workoutSpin.getSelectedItemPosition()){
                     case 0:
                         if (pushupReps > 0) pushupReps = pushupReps + 1;
                         break;
@@ -228,16 +217,20 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                         break;
                     case 2:
                         if (squatReps > 0) squatReps = squatReps + 1;
-                        break;
-                    case 3:
+                      */ // break;
+                 /*   case 3:
                         if (benchReps > 0) benchReps = benchReps + 1;
                         break;
-                }
+                }*/
+
+
+                    myReps = myReps + 1;
+
                 display();
                 break;
 
             case R.id.SetsDownButton:
-                switch (workoutSpin.getSelectedItemPosition()){
+                /*switch (workoutSpin.getSelectedItemPosition()){
                     case 0:
                         if (pushupSets > 0) pushupSets = pushupSets - 1;
                         break;
@@ -250,12 +243,16 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                     case 3:
                         if (benchSets > 0) benchSets = benchSets - 1;
                         break;
-                }
+                }*/
+
+                if  (mySets > 0)
+                    mySets = mySets - 1;
+
                 display();
                 break;
 
             case R.id.SetsUpButton:
-                switch (workoutSpin.getSelectedItemPosition()){
+                /*switch (workoutSpin.getSelectedItemPosition()){
                     case 0:
                         if (pushupSets > 0) pushupSets = pushupSets + 1;
                         break;
@@ -268,39 +265,44 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                     case 3:
                         if (benchSets > 0) benchSets = benchSets + 1;
                         break;
-                }
+                }*/
+                mySets = mySets + 1;
                 display();
                 break;
 
             case R.id.weightDownButton:
-                switch (workoutSpin.getSelectedItemPosition()){
+                /*switch (workoutSpin.getSelectedItemPosition()){
                     case 2:
                         if (squatWeight > 0) squatWeight = squatWeight - 2.5f;
                         break;
                     case 3:
                         if (benchSets > 0) benchWeight = benchWeight - 2.5f;
                         break;
-                }
+                }*/
+
+                if  (myWeight > 0)
+                    myWeight = myWeight - 2.5f;
+
+
                 display();
                 break;
 
             case R.id.weightUpButton:
-                switch (workoutSpin.getSelectedItemPosition()){
+               /* switch (workoutSpin.getSelectedItemPosition()){
                     case 2:
                         if (squatWeight > 0) squatWeight = squatWeight + 2.5f;
                         break;
                     case 3:
                         if (benchSets > 0) benchWeight = benchWeight + 2.5f;
                         break;
-                }
+                }*/
+                myWeight = myWeight + 2.5f;
                 display();
                 break;
 
             case R.id.submitButton:
-                int mySets = 0;
-                int myReps = 0;
-                float myWeight = 0;
-                switch(workoutSpin.getSelectedItemPosition()){
+
+                /*switch(workoutSpin.getSelectedItemPosition()){
                     case 0:
                         myReps = pushupReps;
                         mySets = pushupSets;
@@ -321,7 +323,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                         mySets = benchSets;
                         myWeight = benchWeight;
                         break;
-                }
+                }*/
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
                 Date date = new Date();
                 String dateTime = dateFormat.format(date);
@@ -355,51 +357,18 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     // update the activity's display
     public void display() {
+        setsTextView.setText(Integer.toString(mySets));
+        repsTextView.setText(Integer.toString(myReps));
+        weightEditText.setText(Float.toString(myWeight));
 
-        switch(workoutSpin.getSelectedItemPosition()){
-            case 0:
-                setsTextView.setText(Integer.toString(pushupSets));
-                repsTextView.setText(Integer.toString(pushupReps));
-                break;
-            case 1:
-                setsTextView.setText(Integer.toString(crunchSets));
-                repsTextView.setText(Integer.toString(crunchReps));
-                break;
-            case 2:
-                setsTextView.setText(Integer.toString(squatSets));
-                repsTextView.setText(Integer.toString(squatReps));
-                weightEditText.setText(Float.toString(squatWeight));
-                break;
-            case 3:
-                setsTextView.setText(Integer.toString(benchSets));
-                repsTextView.setText(Integer.toString(benchReps));
-                weightEditText.setText(Float.toString(benchWeight));
-        }
 
         // if "Remember Entries" is checked, save the input values
         if (hasMem)
         {
             editor = sharedpreferences.edit();
-            switch(workoutSpin.getSelectedItemPosition()){
-                case 0:
-                    editor.putInt("pushupReps", pushupReps);
-                    editor.putInt("pushupSets", pushupSets);
-                    break;
-                case 1:
-                    editor.putInt("crunchReps", crunchReps);
-                    editor.putInt("crunchSets", crunchSets);
-                    break;
-                case 2:
-                    editor.putInt("squatReps", squatReps);
-                    editor.putInt("squatSets", squatSets);
-                    editor.putFloat("squatWeight", squatWeight);
-                    break;
-                case 3:
-                    editor.putInt("benchReps", benchReps);
-                    editor.putInt("benchSets", benchSets);
-                    editor.putFloat("benchWeight", benchWeight);
-                    break;
-            }
+            editor.putInt("myReps", myReps);
+            editor.putInt("mySets", mySets);
+            editor.putFloat("myWeight", myWeight);
             editor.commit();
         }
     }

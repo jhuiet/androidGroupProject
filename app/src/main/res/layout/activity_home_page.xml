@@ -4,41 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
     android:paddingTop="16dp"
     tools:context="jolliffe.a415.csc.groupproject.HomePage">
 
-
     <TextView
-        android:id="@+id/main_title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="30sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+            android:id="@+id/main_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="30sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/add_button"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:text="Button"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/main_title_text"
-        android:layout_alignParentStart="true" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/main_title_text">
+        <TableRow android:gravity="center_horizontal">
+            <Button
+                android:id="@+id/add_button"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:text="Enter Gainz" />
 
-    <Button
-        android:id="@+id/track_button"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
+            <Button
+                android:id="@+id/track_button"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:text="Track Gainz" />
+        </TableRow>
 
-        android:text="Button"
+    </TableLayout>
 
-        android:layout_alignBaseline="@+id/add_button"
-        android:layout_alignBottom="@+id/add_button"
-        android:layout_toEndOf="@+id/add_button"
-        android:layout_marginStart="20dp" />
 </RelativeLayout>
